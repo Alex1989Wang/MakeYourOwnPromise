@@ -8,17 +8,21 @@
 import Foundation
 
 /*
- We need to have some ways to wrap a function within a closure
+ 1. init a promise with an empty box
  
- - Can't return Void: has to return something to wrap this execution and let the framework know
- the result of this execution
+ 2. try execute whatever suplied by `firstly`'s closure
+ 
+ 3. get the closure's returned promise and connect its boxed handler with the local promise's seal function
+ 
+ 4. return the local promise
  */
-public func firstly(_ execute: () -> Void) {
-    execute()
+public func firstly<T, U: Promise<T>>(_ execute: () throws -> U) -> U {
+    let promise = U()
+    do {
+        let rv = try execute()
+        rv.pipe(to: promise.box.seal)
+    } catch let err {
+        promise.box.seal(.failed(err))
+    }
+    return promise
 }
-
-
-public func then(_ execute: ()->Void) {
-    execute()
-}
-

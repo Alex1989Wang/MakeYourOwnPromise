@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 
 /// This represents a asynchronous function call
-/// Questions:
-/// 1. could it be synchronous?
-///
 
 final public class Promise<Value> {
     
@@ -41,13 +38,17 @@ final public class Promise<Value> {
         })
     }
     
-    func then<T, U: Promise<T>>(_ execute: @escaping (Value)->U) -> U {
+    func then<T, U: Promise<T>>(_ execute: @escaping (Value) throws ->U) -> U {
         let nextPromise = U()
         pipe { result in
             switch result {
             case .fulfilled(let value):
-                let rv = execute(value)
-                rv.pipe(to: nextPromise.box.seal)
+                do {
+                    let rv = try execute(value)
+                    rv.pipe(to: nextPromise.box.seal)
+                } catch let err {
+                    nextPromise.box.seal(.failed(err))
+                }
             case .failed(let err):
                 nextPromise.box.seal(.failed(err))
             }
@@ -55,29 +56,23 @@ final public class Promise<Value> {
         return nextPromise
     }
     
-    @discardableResult func done(_ execute: @escaping (Value) -> Void) -> Promise<Void> {
+    @discardableResult func done(_ execute: @escaping (Value) throws -> Void) -> Promise<Void> {
         let rp = Promise<Void>()
         pipe {
             switch $0 {
             case .fulfilled(let value):
-                execute(value)
-                rp.box.seal(.fulfilled(()))
+                do {
+                    try execute(value)
+                    rp.box.seal(.fulfilled(()))
+                } catch let err {
+                    rp.box.seal(.failed(err))
+                }
             case .failed(let error):
                 rp.box.seal(.failed(error))
             }
         }
         return rp
     }
-}
-
-/// the generic result of a promise
-enum Result<Value> {
-    case fulfilled(Value)
-    case failed(Error)
-}
-
-enum PromiseError: Error {
-    case general // represents a general error
 }
 
 final class EmptyBox<T> {
@@ -123,3 +118,14 @@ final class Resolver<T> {
         box.seal(.failed(error))
     }
 }
+
+/// the generic result of a promise
+enum Result<Value> {
+    case fulfilled(Value)
+    case failed(Error)
+}
+
+enum PromiseError: Error {
+    case general // represents a general error
+}
+
