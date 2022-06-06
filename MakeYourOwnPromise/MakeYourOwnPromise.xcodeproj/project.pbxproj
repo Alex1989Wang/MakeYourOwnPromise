@@ -16,6 +16,8 @@
 		AC977F46284D9C6900701443 /* MakeYourOwnPromiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F45284D9C6900701443 /* MakeYourOwnPromiseUITests.swift */; };
 		AC977F48284D9C6900701443 /* MakeYourOwnPromiseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F47284D9C6900701443 /* MakeYourOwnPromiseUITestsLaunchTests.swift */; };
 		AC977F58284D9C9F00701443 /* Firstly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F56284D9C9F00701443 /* Firstly.swift */; };
+		AC977F59284D9C9F00701443 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F57284D9C9F00701443 /* Promise.swift */; };
+		AC977F5C284D9CDE00701443 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F5A284D9CDE00701443 /* PromiseTests.swift */; };
 		AC977F5D284D9CDE00701443 /* PromiseFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F5B284D9CDE00701443 /* PromiseFeaturesTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		AC977F45284D9C6900701443 /* MakeYourOwnPromiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeYourOwnPromiseUITests.swift; sourceTree = "<group>"; };
 		AC977F47284D9C6900701443 /* MakeYourOwnPromiseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeYourOwnPromiseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC977F56284D9C9F00701443 /* Firstly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firstly.swift; sourceTree = "<group>"; };
+		AC977F57284D9C9F00701443 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		AC977F5A284D9CDE00701443 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
 		AC977F5B284D9CDE00701443 /* PromiseFeaturesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseFeaturesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				AC977F5B284D9CDE00701443 /* PromiseFeaturesTests.swift */,
+				AC977F5A284D9CDE00701443 /* PromiseTests.swift */,
 			);
 			path = MakeYourOwnPromiseTests;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				AC977F55284D9C9F00701443 /* Features */,
+				AC977F57284D9C9F00701443 /* Promise.swift */,
 			);
 			path = Promise;
 			sourceTree = SOURCE_ROOT;
@@ -279,6 +285,7 @@
 			files = (
 				AC977F29284D9C6700701443 /* ViewController.swift in Sources */,
 				AC977F58284D9C9F00701443 /* Firstly.swift in Sources */,
+				AC977F59284D9C9F00701443 /* Promise.swift in Sources */,
 				AC977F25284D9C6700701443 /* AppDelegate.swift in Sources */,
 				AC977F27284D9C6700701443 /* SceneDelegate.swift in Sources */,
 			);
@@ -289,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC977F5D284D9CDE00701443 /* PromiseFeaturesTests.swift in Sources */,
+				AC977F5C284D9CDE00701443 /* PromiseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
