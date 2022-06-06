@@ -28,6 +28,44 @@ final public class Promise<Value> {
         box = EmptyBox()
     }
     
+    func pipe(to: @escaping (Result<Value>) -> Void) {
+        box.inspect({ boxed in
+            switch boxed {
+            case .pending:
+                boxed = .pending(to)
+            case .resolved(let t):
+                to(t)
+            }
+        })
+    }
+    
+    func then<T, U: Promise<T>>(_ execute: @escaping (Value)->U) -> U {
+        let nextPromise = U()
+        pipe { result in
+            switch result {
+            case .fulfilled(let value):
+                let rv = execute(value)
+                rv.pipe(to: nextPromise.box.seal)
+            case .failed(let err):
+                nextPromise.box.seal(.failed(err))
+            }
+        }
+        return nextPromise
+    }
+    
+    @discardableResult func done(_ execute: @escaping (Value) -> Void) -> Promise<Void> {
+        let rp = Promise<Void>()
+        pipe {
+            switch $0 {
+            case .fulfilled(let value):
+                execute(value)
+                rp.box.seal(.fulfilled(()))
+            case .failed(let error):
+                rp.box.seal(.failed(error))
+            }
+        }
+        return rp
+    }
 }
 
 /// the generic result of a promise
