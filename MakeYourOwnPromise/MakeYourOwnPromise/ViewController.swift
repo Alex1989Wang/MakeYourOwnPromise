@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var promise: Promise<Bool>?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,6 +25,8 @@ extension ViewController {
     
     func testPromise() {
         
+        PromiseCounter.reset()
+        
         let promise = Promise<Bool> { [weak self] ret in
             self?.someAsynchronousFunctionResultInRandomBool(completed: { result in
                 ret.fulfills(with: result)
@@ -36,6 +38,8 @@ extension ViewController {
             (self?.asyncStringFunctionInPromise())!
         }).done({ string in
             print(string)
+            
+            print("\(PromiseCounter.getCount()) promises were created.")
         })
     }
     

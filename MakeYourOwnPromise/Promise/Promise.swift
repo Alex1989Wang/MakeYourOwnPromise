@@ -22,10 +22,12 @@ final public class Promise<Value> {
         box = EmptyBox()
         let resolver = Resolver(box: box)
         execute(resolver)
+        PromiseCounter.increment()
     }
     
     init() {
         box = EmptyBox()
+        PromiseCounter.increment()
     }
     
     func pipe(to: @escaping (Result<Value>) -> Void) {

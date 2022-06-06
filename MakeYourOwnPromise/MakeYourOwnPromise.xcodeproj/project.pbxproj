@@ -19,6 +19,7 @@
 		AC977F59284D9C9F00701443 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F57284D9C9F00701443 /* Promise.swift */; };
 		AC977F5C284D9CDE00701443 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F5A284D9CDE00701443 /* PromiseTests.swift */; };
 		AC977F5D284D9CDE00701443 /* PromiseFeaturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F5B284D9CDE00701443 /* PromiseFeaturesTests.swift */; };
+		AC977F5F284DAA5500701443 /* PromiseCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC977F5E284DAA5500701443 /* PromiseCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		AC977F57284D9C9F00701443 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		AC977F5A284D9CDE00701443 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
 		AC977F5B284D9CDE00701443 /* PromiseFeaturesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseFeaturesTests.swift; sourceTree = "<group>"; };
+		AC977F5E284DAA5500701443 /* PromiseCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				AC977F55284D9C9F00701443 /* Features */,
 				AC977F57284D9C9F00701443 /* Promise.swift */,
+				AC977F5E284DAA5500701443 /* PromiseCounter.swift */,
 			);
 			path = Promise;
 			sourceTree = SOURCE_ROOT;
@@ -287,6 +290,7 @@
 				AC977F58284D9C9F00701443 /* Firstly.swift in Sources */,
 				AC977F59284D9C9F00701443 /* Promise.swift in Sources */,
 				AC977F25284D9C6700701443 /* AppDelegate.swift in Sources */,
+				AC977F5F284DAA5500701443 /* PromiseCounter.swift in Sources */,
 				AC977F27284D9C6700701443 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
